@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <base href="../../../" />
+ <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular & Laravel by Keenthemes</title>
+ <meta charset="utf-8" />
+ <meta name="description" content="<?php echo \htmlentities($html_title??'', ENT_QUOTES, 'UTF-8', false); ?>" />
+ <meta name="keywords" content="<?php echo \htmlentities($html_keywords??'', ENT_QUOTES, 'UTF-8', false); ?>" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <meta property="og:locale" content="<?php echo \htmlentities($html_locale??'', ENT_QUOTES, 'UTF-8', false); ?>" />
+ <meta property="og:type" content="<?php echo \htmlentities($html_type??'', ENT_QUOTES, 'UTF-8', false); ?>" />
+ <meta property="og:title" content="<?php echo \htmlentities($html_url??'', ENT_QUOTES, 'UTF-8', false); ?>" />
+ <meta property="og:url" content="<?php echo \htmlentities($html_url??'', ENT_QUOTES, 'UTF-8', false); ?>" />
+ <meta property="og:site_name" content="<?php echo \htmlentities($html_title??'', ENT_QUOTES, 'UTF-8', false); ?>" />
+ <link rel="canonical" href="<?php echo \htmlentities($html_canonical??'', ENT_QUOTES, 'UTF-8', false); ?>" />
+ <link rel="shortcut icon" href="<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>/public/media/logos/favicon.ico" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+ <link href="<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>/public/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+ <link href="<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>/public/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+ <?php echo $this->yieldContent('header_css'); ?>
+ <?php echo $this->yieldContent('header_scripts'); ?>
+</head>
+
+<body id="kt_body" class="app-blank app-blank bgi-size-cover bgi-position-center bgi-no-repeat">
+ <!--begin::Theme mode setup on page load-->
+ <script>
+ var defaultThemeMode = "light";
+ var themeMode;
+ if (document.documentElement) {
+ if (document.documentElement.hasAttribute("data-theme-mode")) {
+ themeMode = document.documentElement.getAttribute("data-theme-mode");
+ } else {
+ if (localStorage.getItem("data-theme") !== null) {
+ themeMode = localStorage.getItem("data-theme");
+ } else {
+ themeMode = defaultThemeMode;
+ }
+ }
+ if (themeMode === "system") {
+ themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+ }
+ document.documentElement.setAttribute("data-theme", themeMode);
+ }
+ </script>
+ <!--end::Theme mode setup on page load-->
+ <!--begin::Root-->
+ <div class="d-flex flex-column flex-root" id="kt_app_root">
+ <!--begin::Page bg image-->
+ <style>
+ body {
+ background-image: url('<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>/public/assets/media/auth/bg-10.jpg');
+ }
+ </style>
+ <!--end::Page bg image-->
+ <!--begin::Authentication - Sign-in -->
+ <div class="d-flex flex-column flex-column-fluid flex-lg-row">
+ <!--begin::Aside-->
+ <div class="d-flex flex-center w-lg-50 pt-15 pt-lg-0 px-10">
+ <!--begin::Aside-->
+ <div class="d-flex flex-center flex-lg-start flex-column">
+ <!--begin::Logo-->
+ <a href="<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>" class="mb-7">
+ <img alt="Logo" src="<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>/public/assets/media/logos/custom-3.png" style="width:300px" />
+ </a>
+ <!--end::Logo-->
+ <!--begin::Title-->
+ <h2 class="text-white fw-normal m-0">Suite empresarial</h2>
+ <!--end::Title-->
+ </div>
+ <!--begin::Aside-->
+ </div>
+ <!--begin::Aside-->
+ <!--begin::Body-->
+ <?php echo $this->yieldContent('content'); ?>
+ <!--end::Body-->
+ </div>
+ <!--end::Authentication - Sign-in-->
+ </div>
+ <!--end::Root-->
+ <!--begin::Javascript-->
+ <script>
+ var hostUrl = "<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>/public/";
+ </script>
+ <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+ <script src="<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>/public/assets/plugins/global/plugins.bundle.js"></script>
+ <script src="<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>/public/assets/js/scripts.bundle.js"></script>
+ <!--end::Global Javascript Bundle-->
+ <!--begin::Custom Javascript(used for this page only)-->
+ <script src="<?php echo \htmlentities($url??'', ENT_QUOTES, 'UTF-8', false); ?>/public/assets/js/custom/authentication/sign-in/general.js"></script>
+ <!--end::Custom Javascript-->
+ <?php echo $this->yieldContent('footer_scripts'); ?>
+ <!--end::Javascript-->
+</body>
+<!--end::Body-->
+
+</html>

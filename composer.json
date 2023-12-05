@@ -1,0 +1,33 @@
+{
+    "require": {
+        "ext-bcmath": "*",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "bramus/router": "*",
+        "chillerlan/php-qrcode": "*",
+        "cocur/slugify": "*",
+        "eftec/bladeone": "*",
+        "illuminate/database": "*",
+        "rakibdevs/mrz-parser": "^1.2",
+        "ramsey/uuid": "*",
+        "vlucas/valitron": "*"
+    },
+    "autoload": {
+      "classmap": [
+        "controllers",
+        "models",
+        "helpers",
+        "services"
+      ],
+      "psr-4": {
+      
+      }
+    },
+    "config": {
+      "platform": {
+        "php": "8.2.0"
+      },
+      "sort-packages": true
+    }
+  }

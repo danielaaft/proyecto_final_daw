@@ -1,0 +1,41 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
+
+<IfModule mod_headers.c>
+	Header always unset X-Frame-Options
+	Header set X-XSS-Protection "1; mode=block"
+	Header set Strict-Transport-Security "max-age=10886400; includeSubDomains; preload"
+</IfModule>
+
+<Files config.php>
+    deny from all
+</Files>
+<Files config_data.php>
+    deny from all
+</Files>
+<Files composer.json>
+    deny from all
+</Files>
+<Files composer.lock>
+    deny from all
+</Files>
+<Files .env>
+    deny from all
+</Files>
+<Files .gitignore>
+    deny from all
+</Files>
+<Files phpinfo.php>
+    deny from all
+</Files>
+<Files Dockerfile>
+    deny from all
+</Files>
+<Files README.md>
+    deny from all
+</Files>
+<Files gitlab-ci.yml>
+    deny from all
+</Files>

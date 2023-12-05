@@ -1,0 +1,84 @@
+/* Resetear estilos para mayor consistencia */
+body, h1, p, figure, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+/* Estilos para el header */
+.header {
+    background-color: #1a237e; /* Azul índigo oscuro */
+    color: #fff; /* Texto en blanco */
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el contenedor */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    font-size: 18px;
+    color: #333; /* Gris oscuro */
+    font-weight: bold;
+}
+
+/* Estilos para las imágenes */
+.imagenes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+figure {
+    margin: 0;
+    text-align: center;
+}
+
+img {
+    width: 200px;
+    height: 130px;
+    border: 3px solid #64b5f6; /* Azul cielo */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+figcaption {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #757575; /* Gris medio */
+}
+
+/* Estilos para el botón "Acepto" */
+.accept-button {
+    display: block;
+    width: 100%; /* Ocupa el mismo ancho que el .container */
+    padding: 10px 20px;
+    background-color: #1a237e; /* Azul índigo oscuro */
+    color: #fff; /* Texto en blanco */
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.accept-button:hover {
+    background-color: #0d47a1; /* Azul más oscuro en el hover */
+}

@@ -1,0 +1,4 @@
+vendor/
+scripts/bin/
+storage/
+config.php
