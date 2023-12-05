@@ -2,3 +2,8 @@ vendor/
 scripts/bin/
 storage/
 config.php
+.idea/
+.vscode/
+_dev_plantilla/
+cache/
+config/
