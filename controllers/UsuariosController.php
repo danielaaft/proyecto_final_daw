@@ -14,6 +14,8 @@ class UsuariosController extends BaseController
 
         //permisos
         Usuario::checkLogedIn();
+
+        Usuario::checkSuperAdmin();
     }
 
     //
@@ -46,12 +48,28 @@ class UsuariosController extends BaseController
             'usuario' => $usuario
         ];
         
-        $this->loadView('usuarios.', $view);
+        $this->loadView('usuarios.update', $view);
      }
 
-     public function postUpdate()
+     public function postUpdate($id)
      {
-        $this->redirect($this->config->base_url . '/usuarios');
+        $usuario = Usuario::find($id);
+
+        if (!$usuario) {
+            //redireccionar
+        }
+
+        $usuario->nombre = $_POST['nombre'];
+        $usuario->apellidos = $_POST['apellidos'];
+        $usuario->email = $_POST['email'];
+        $usuario->empresa = $_POST['empresa'];
+        if (!empty($_POST['password'])) {
+            $usuario->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        }
+
+        $usuario->save();
+
+        $this->redirect($this->config->base_url . '/list',['Usuario editado con éxito', 'success','']);
      }
      
      public function getCreate()
@@ -117,9 +135,9 @@ class UsuariosController extends BaseController
     {
         $usuario = Usuario::find($id);
 
-        if ($$usuario) {
+        if ($usuario) {
             $usuario->delete();
-            $this->redirect($this->config->base_url . '/delete',['Usuario eliminado', 'success','']);
+            $this->redirect($this->config->base_url . '/list',['Usuario eliminado', 'success','']);
         }
         
         

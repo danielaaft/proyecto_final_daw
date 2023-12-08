@@ -27,7 +27,7 @@ class IdentificacionController extends BaseController
 	{
         $uuid = Search::encrypt_decrypt('decrypt',$uuid_enc);
         if(!$uuid)
-            die('Operación no válida');
+            die('usuario no válido');
 
         $op = Operacion::where('uuid','=', $uuid)->first();
         if(!$op)

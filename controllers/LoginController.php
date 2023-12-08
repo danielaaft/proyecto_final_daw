@@ -29,25 +29,13 @@ class LoginController extends BaseController
 
 	public function postIndex ()
 	{
-		if(isset($_SESSION['usuario_id']) && $_SESSION['usuario_id'] > 0)
-		{
-			$this->redirect($this->config->base_url);
-		}
 		$this->sanitizeRequestData();
-    	$usuario = Usuario::where('email','=',$this->request->email)->first();
-    	if(!$usuario)
-    	{
-    		$this->redirect($this->config->base_url,['Email no válido', 'danger','']);
-    	}
-    	$check = password_verify ($this->request->password, $usuario->password); 
-    	if(!$check)
-    	{
-    		$this->redirect($this->config->base_url,['Contraseña no válida', 'danger','']);
-    	}
+		$usuario = Usuario::verificacionUsuario($this->request->email, $this->request->password);
+		if($usuario)
+			$this->redirect($this->config->base_url,['bienvenid@ ' . $usuario->nombre, 'success','']);
+		else
+			$this->redirect($this->config->base_url,['Contraseña no válida ', 'danger','']);
 
-		$_SESSION['usuario_id'] = $usuario->id;
-		
-		$this->redirect($this->config->base_url,['bienvenid@ ' . $usuario->nombre, 'success','']);
 	}
 
 	public function getRecuperarPass ()

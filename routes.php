@@ -1,7 +1,6 @@
 <?php
 
 $router = new \Bramus\Router\Router();
-
 //	404
 $router->set404(function () {
 	global $request_id;
@@ -16,7 +15,13 @@ $router->before('GET|POST', '/.*', function ()
 	header('X-Powered-By: RGest');
 });
 
+/**
+ * Operaciones
+ */
 
+ $router->get('/op/list', 'OperacionesController@getIndex');
+ $router->get('/op/list/{id}','OperacionesController@getRead');
+ $router->post('/op/delete/{id}', 'OperacionesController@postDelete');
 
 
 //api
@@ -59,3 +64,4 @@ $router->get('/delete/{id}', 'UsuariosController@getDelete');
 $router->post('/delete/{id}', 'UsuariosController@postDelete');
 $router->get('/update/{id}', 'UsuariosController@getUpdate');
 $router->post('/update/{id}', 'UsuariosController@postUpdate');
+

@@ -26,7 +26,7 @@
                 <figcaption>- PASAPORTE -</figcaption>
             </figure>
         </div>
-        <a href="{{$url_continuar}" class="accept-button">Acepto</a>
+        <a href="{{$url_continuar}}" class="accept-button">Acepto</a>
     </div>
     <footer class="footer">
         <p>Este sitio web utiliza cookies para ofrecerte una mejor experiencia. Al continuar navegando, aceptas nuestra <a href="/politica-cookies">política de cookies</a>.</p>
