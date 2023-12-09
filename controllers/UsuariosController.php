@@ -14,7 +14,6 @@ class UsuariosController extends BaseController
 
         //permisos
         Usuario::checkLogedIn();
-
         Usuario::checkSuperAdmin();
     }
 
@@ -44,6 +43,11 @@ class UsuariosController extends BaseController
      {
         $usuario = Usuario::find($id);
 
+        if (!$usuario) {
+            $this->redirect($this->config->base_url . '/usuarios',['Usuario no encontrado', 'danger','']);
+            //redireccionar
+        }
+
         $view = [
             'usuario' => $usuario
         ];
@@ -53,30 +57,32 @@ class UsuariosController extends BaseController
 
      public function postUpdate($id)
      {
+        $this->sanitizeRequestData();
         $usuario = Usuario::find($id);
 
         if (!$usuario) {
+            $this->redirect($this->config->base_url . '/usuarios',['Error al actualizar usuario', 'danger','']);
             //redireccionar
         }
 
-        $usuario->nombre = $_POST['nombre'];
-        $usuario->apellidos = $_POST['apellidos'];
-        $usuario->email = $_POST['email'];
-        $usuario->empresa = $_POST['empresa'];
-        if (!empty($_POST['password'])) {
-            $usuario->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $usuario->nombre = $this->request->nombre;
+        $usuario->apellidos = $this->request->apellidos;
+        $usuario->email = $this->request->email;
+        $usuario->empresa = $this->request->empresa;
+        if (!empty($this->request->password)) {
+            $usuario->password = password_hash($this->request->password, PASSWORD_DEFAULT);
         }
 
         $usuario->save();
 
-        $this->redirect($this->config->base_url . '/list',['Usuario editado con éxito', 'success','']);
+        $this->redirect($this->config->base_url . '/usuarios/update/' . $usuario->id,['Usuario editado con éxito', 'success','']);
      }
      
      public function getCreate()
      {
 
          $view = [
-			'url_form_post' => $this->config->base_url . '/create'
+			'url_form_post' => $this->config->base_url . '/usuarios/create'
 		];
 
 		$this->loadView('usuarios.create', $view);
@@ -97,7 +103,7 @@ class UsuariosController extends BaseController
      if($usuarioExistente) {
         {
             //si el usuario existe, se redirecciona
-    		$this->redirect($this->config->base_url . '/create',['Email ya registrado', 'danger','']);
+    		$this->redirect($this->config->base_url . '/usuarios/create',['Email ya registrado', 'danger','']);
     	}
      }
 
@@ -113,7 +119,7 @@ class UsuariosController extends BaseController
         $nuevoUsuario->apiKey= rand(0,1000) . Uuid::uuid4()->toString();
 
         $nuevoUsuario->save();
-        $this->redirect($this->config->base_url . '/create',['Usuario guardado con éxito', 'success','']);
+        $this->redirect($this->config->base_url . '/usuarios/update/' . $nuevoUsuario->id,['Usuario guardado con éxito', 'success','']);
      }
      
         //$this->redirect($this->config->base_url . '/usuarios');
@@ -137,9 +143,10 @@ class UsuariosController extends BaseController
 
         if ($usuario) {
             $usuario->delete();
-            $this->redirect($this->config->base_url . '/list',['Usuario eliminado', 'success','']);
+            $this->redirect($this->config->base_url . '/usuarios',['Usuario eliminado', 'success','']);
         }
         
+        $this->redirect($this->config->base_url . '/usuarios',['Error al seleccionar usuario', 'danger','']);
         
     }
 }

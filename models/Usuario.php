@@ -44,7 +44,7 @@ class Usuario extends Eloquent
             
         	$_SESSION['usuario_id'] = $usuario->id;
         	$_SESSION['email'] = $usuario->email;
-        	$_SESSION['nombre'] = $usuario->name;
+        	$_SESSION['nombre'] = $usuario->nombre . ' ' . $usuario->apellidos;
             $_SESSION['superadmin'] = $usuario->superadmin;
 
             return $usuario;

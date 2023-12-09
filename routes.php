@@ -19,11 +19,12 @@ $router->before('GET|POST', '/.*', function ()
  * Operaciones
  */
 
- $router->get('/op/list', 'OperacionesController@getIndex');
- $router->get('/op/list/{id}','OperacionesController@getRead');
- $router->post('/op/delete/{id}', 'OperacionesController@postDelete');
+ $router->get('/operaciones/{id}','OperacionesController@getRead');
+ $router->get('/operaciones(/[A-Za-z0-9=_-]+)?(/\d+)?(/[a-z0-9_-]+)?(/[A-Za-z0-9_-]+)?(/\d+)?', 'OperacionesController@getIndex');
 
+ $router->post('/operaciones/delete/{id}', 'OperacionesController@postDelete');
 
+ $router->post('/operaciones', 'OperacionesController@postIndex');
 //api
 $router->post('/api/create', 'ApiOperacionController@postCrearOperacion');
 $router->post('/api/info', 'ApiOperacionController@postInfo');
@@ -51,17 +52,19 @@ $router->get('/login', 'LoginController@getIndex');
 $router->post('/login', 'LoginController@postIndex');
 $router->get('/logout', 'LoginController@getLogout');
 
-$router->get('/', 'HomeController@getIndex');
+
 
 /**
  *  Usuarios
  */
 
-$router->get('/create','UsuariosController@getCreate');
-$router->post('/create','UsuariosController@postCreate');
-$router->get('/list', 'UsuariosController@getIndex');
-$router->get('/delete/{id}', 'UsuariosController@getDelete');
-$router->post('/delete/{id}', 'UsuariosController@postDelete');
-$router->get('/update/{id}', 'UsuariosController@getUpdate');
-$router->post('/update/{id}', 'UsuariosController@postUpdate');
+$router->get('/usuarios/create','UsuariosController@getCreate');
+$router->post('/usuarios/create','UsuariosController@postCreate');
+$router->get('/usuarios', 'UsuariosController@getIndex');
+$router->get('/usuarios/delete/{id}', 'UsuariosController@getDelete');
+$router->post('/usuarios/delete/{id}', 'UsuariosController@postDelete');
+$router->get('/usuarios/update/{id}', 'UsuariosController@getUpdate');
+$router->post('/usuarios/update/{id}', 'UsuariosController@postUpdate');
 
+$router->get('/demo/{uuid}', 'HomeController@getDemo');
+$router->get('/', 'HomeController@getIndex');
