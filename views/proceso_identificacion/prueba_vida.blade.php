@@ -10,33 +10,97 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="http://localhost/proyecto_daniela/v1/public/js/recognition/face-api.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
     <style>
-        * {
-            box-sizing: border-box;
+        body {
+            background-color: #f5f5f5;
+            color: #fff;
             margin: 0;
-            padding: 0;
+            overflow: hidden; /* Evitar el desplazamiento horizontal */
+        }
+
+        header {
+            background-color: #323248; /* Color oscuro para el encabezado */
+            color: #fff; /* Color claro para el texto del encabezado */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .right-section {
+            text-align: right;
+        }
+
+        .container {
+            
+            margin: 20px auto;
         }
 
         video {
             position: absolute;
             z-index: 1;
+            width: 100%;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
         }
 
         canvas {
             position: relative;
             z-index: 20;
         }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .col-md-12:last-child {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        @media (min-width: 992px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 960px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <h1>Prueba de Vida</h1>
-    <div style="position: relative">
-        <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
-        <canvas id="overlay"></canvas>
-        <canvas id="aux" style="display:none"></canvas>
+    <header>
+        <div class="left-section">
+            <img src="/PROYECTO_DANIELA/v1/public/assets/media/logos/dis_white.png" alt="">
+        </div>
+        <div class="right-section">
+            <h1>Prueba de vida</h1>
+            <p>Selecciona la cámara:</p>
+            <select id="cameraSelect"></select>
+            <button id="startCamera">Acceder a la cámara</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="col-md-12" style="border:4px solid #fff;position:relative;padding:0px">
+            <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+            <canvas id="overlay"></canvas>
+            <canvas id="aux" style="display:none"></canvas>
+        </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
 
     <script>
         const video = document.getElementById("inputVideo");
