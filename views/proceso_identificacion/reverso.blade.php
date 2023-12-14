@@ -258,7 +258,7 @@
         window.onload = function() {
             if ('speechSynthesis' in window) {
                 const synthesis = window.speechSynthesis;
-                const mensaje = new SpeechSynthesisUtterance('Escanea el anverso de tu DNI.');
+                const mensaje = new SpeechSynthesisUtterance('Escanea el reverso de tu DNI.');
                 synthesis.speak(mensaje);
             } else {
                 console.log ("no se puede escuchar voz")

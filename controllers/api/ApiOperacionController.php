@@ -58,7 +58,7 @@ class ApiOperacionController extends BaseController
 		$operacion = new StdClass();
 		$operacion->estado = $op->estado;
 		$operacion->nombres = $op->nombres;
-		$operacion->nombres = $op->apellidos;
+		$operacion->apellidos = $op->apellidos;
 		$operacion->fecha_creacion = $op->created_at;
 		$operacion->nacionalidad = $op->nacionalidad;
 		$operacion->tipo_documento = $op->tipo_doc;
@@ -81,7 +81,7 @@ class ApiOperacionController extends BaseController
 		$operacion->imagenes_anverso = $imagenes_anverso;
 		$operacion->imagenes_selfie = $imagenes_selfie;
 
-		if($operacion->estado != 'Verificacion OK' || $operacion->estado != 'Verificacion KO')
+		if($operacion->estado != 'Verificacion OK' && $operacion->estado != 'Verificacion KO')
 		{
 			$operacion->estado = 'Pendiente';
 		}

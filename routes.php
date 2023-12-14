@@ -19,12 +19,10 @@ $router->before('GET|POST', '/.*', function ()
  * Operaciones
  */
 
- $router->get('/operaciones/{id}','OperacionesController@getRead');
- $router->get('/operaciones(/[A-Za-z0-9=_-]+)?(/\d+)?(/[a-z0-9_-]+)?(/[A-Za-z0-9_-]+)?(/\d+)?', 'OperacionesController@getIndex');
-
+$router->get('/operaciones/op/{id}','OperacionesController@getRead');
  $router->post('/operaciones/delete/{id}', 'OperacionesController@postDelete');
-
  $router->post('/operaciones', 'OperacionesController@postIndex');
+ $router->get('/operaciones(/[A-Za-z0-9=_-]+)?(/\d+)?(/[a-z0-9_-]+)?(/[A-Za-z0-9_-]+)?(/\d+)?', 'OperacionesController@getIndex');
 //api
 $router->post('/api/create', 'ApiOperacionController@postCrearOperacion');
 $router->post('/api/info', 'ApiOperacionController@postInfo');

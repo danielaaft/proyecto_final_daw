@@ -216,7 +216,7 @@
                 success: function (response) {
                     // Manejar la respuesta del servidor
                     if (response.error === false) {
-                        alert('Lectura correcta.  Gracias ' + response.datos.first_name + ' vamos al siguiente paso.');
+                        alert('Lectura correcta.  Gracias ' + response.nombre + ' vamos al siguiente paso.');
                         window.location.replace(response.url_continuar);
                     } else {
                         console.log(response);
@@ -235,7 +235,7 @@
         window.onload = function() {
             if ('speechSynthesis' in window) {
                 const synthesis = window.speechSynthesis;
-                const mensaje = new SpeechSynthesisUtterance('Ahora,, Escanea el reverso de tu DNI.');
+                const mensaje = new SpeechSynthesisUtterance('Ahora, Escanea el anverso de tu DNI.');
                 synthesis.speak(mensaje);
             } else {
                 console.log ("no se puede escuchar voz")

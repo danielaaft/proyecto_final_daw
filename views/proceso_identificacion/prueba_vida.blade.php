@@ -235,6 +235,8 @@
                     success: function (response) {
                         if (response.comparacion_caras === true) {
                             alert('Lectura correcta.  Gracias ' + response.nombres);
+                            window.location.href = response.redirect_url;
+
                         } else {
                             console.log(response);
                             console.log('La respuesta de la petición fue data = false. Capturando automáticamente...');
