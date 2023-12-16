@@ -109,16 +109,18 @@
 									<div class="menu-item">
 									<a class="menu-link" href="{{$url}}">
 											<span class="menu-icon">
-											<i class="bi bi-house-fill fs-2x"></i> 
+											<i class="bi bi-house-fill fs-2x" style="margin-left:2px;"></i> 
 											</span>
 											<span class="menu-title">Inicio</span>
 										</a>
 										</div>
 
-									<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
 										<!--begin:Menu link-->
 										<span class="menu-link">
-										<i class="bi bi-person-fill fs-2x"></i> 
+										<span class="menu-icon">
+										<i class="bi bi-card-heading fs-2x"></i> 
+										</span>
 											<span class="menu-title">Operaciones</span>
 											<span class="menu-arrow"></span>
 										</span>
@@ -136,7 +138,9 @@
 									<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
 										<!--begin:Menu link-->
 										<span class="menu-link">
+										<span class="menu-icon">
 										<i class="bi bi-person-fill fs-2x"></i> 
+										</span>
 											<span class="menu-title">Usuarios</span>
 											<span class="menu-arrow"></span>
 										</span>
@@ -159,6 +163,14 @@
 											</div>
 										</div>
 									</div>
+									<div class="menu-item">
+									<a class="menu-link" href="{{$url}}/logout">
+											<span class="menu-icon">
+											<i class="bi bi-box-arrow-left  fs-2x"></i> 
+											</span>
+											<span class="menu-title">Cerrar Sesión</span>
+										</a>
+										</div>
 								</div>
 								<!--end::Menu-->
 							</div>

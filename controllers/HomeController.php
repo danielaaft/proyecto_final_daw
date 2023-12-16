@@ -22,12 +22,12 @@ class HomeController extends BaseController
         if(!isset($_SESSION['superadmin']) || $_SESSION['superadmin'] != 1)
         {
             $operaciones = Operacion::where('usuario_id','=',$_SESSION['usuario_id'])->get();
-			$ultimas_ops = Operacion::where('usuario_id','=',$_SESSION['usuario_id'])->orderBy('id','DESC')->take(10)->get();
+			$ultimas_ops = Operacion::where('usuario_id','=',$_SESSION['usuario_id'])->where('estado','!=','auth-init')->orderBy('id','DESC')->take(10)->get();
         }
 		else
 		{
 			$operaciones = Operacion::get();
-			$ultimas_ops = Operacion::orderBy('id','DESC')->take(10)->get();
+			$ultimas_ops = Operacion::where('estado','!=','auth-init')->orderBy('id','DESC')->take(10)->get();
 		}
 		$operacionesPorMes = array_fill(1, 12, 0); // Inicializa un array para contar operaciones por mes
 

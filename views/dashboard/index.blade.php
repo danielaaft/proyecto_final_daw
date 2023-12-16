@@ -157,7 +157,7 @@
 									<td>{{ $operacion->estado }}</td>
 									<td>{{ $operacion->created_at }}</td>
 									<td>{{ $operacion->updated_at }}</td>
-									<td><a href="{{$url}}/operaciones/{{ $operacion->id }}" class="btn btn-primary">Ver Detalles</a></td>
+									<td><a href="{{$url}}/operaciones/op/{{ $operacion->id }}" class="btn btn-primary">Ver Detalles</a></td>
 								</tr>
 								@endforeach
 							</tbody>

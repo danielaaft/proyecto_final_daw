@@ -58,11 +58,12 @@ $router->get('/logout', 'LoginController@getLogout');
 
 $router->get('/usuarios/create','UsuariosController@getCreate');
 $router->post('/usuarios/create','UsuariosController@postCreate');
-$router->get('/usuarios', 'UsuariosController@getIndex');
+
 $router->get('/usuarios/delete/{id}', 'UsuariosController@getDelete');
 $router->post('/usuarios/delete/{id}', 'UsuariosController@postDelete');
 $router->get('/usuarios/update/{id}', 'UsuariosController@getUpdate');
 $router->post('/usuarios/update/{id}', 'UsuariosController@postUpdate');
+$router->get('/usuarios', 'UsuariosController@getIndex');
 
 $router->get('/demo/{uuid}', 'HomeController@getDemo');
 $router->get('/', 'HomeController@getIndex');
